@@ -737,6 +737,11 @@ Flickity.setUnselectable = function( elem ) {
   elem.setAttribute( 'unselectable', 'on' );
 };
 
+// Chrome workaround
+// Flickity's initialization in the Chrome webview somehow sets existing touchstart events inactive
+// Attaching another touchstart event forces Chrome to refresh its state
+document.body.addEventListener( 'touchstart', Function.prototype );
+
 /**
  * get Flickity instance from element
  * @param {Element} elem
